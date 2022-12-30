@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Pokedex</string>
+
+    <string name="dashboard_title">What Pokemon\nare you looking for?</string>
+    <string name="dashboard_search_placeholder">Search Pokemon, Move, Ability etc</string>
+
+    <string name="pokemonlist_title">Pokedex</string>
+
+    <string name="pokemoninfo_height">Height</string>
+    <string name="pokemoninfo_weight">Weight</string>
+    <string name="pokemoninfo_base_exp">Base EXP</string>
+    <string name="pokemoninfo_training">Training</string>
+    <string name="pokemoninfo_location">Location</string>
+    <string name="pokemoninfo_eggs_groups">Egg Groups</string>
+    <string name="pokemoninfo_gender">Gender</string>
+    <string name="pokemoninfo_breeding">Breeding</string>
+
+    <string-array name="pokemon_info_tabs">
+        <item>About</item>
+        <item>Base Stats</item>
+        <item>Evolution</item>
+        <item>Moves</item>
+    </string-array>
+</resources>
