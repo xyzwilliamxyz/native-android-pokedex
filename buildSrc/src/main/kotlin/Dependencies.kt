@@ -9,7 +9,7 @@ object Dependencies {
     private const val COIL_VERSION = "2.1.0"
     const val COMPOSE_VERSION = "1.3.0-beta01"
     const val KOTLIN_VERSION = "1.7.10"
-    const val GRADLE_VERSION = "7.2.2"
+    const val GRADLE_VERSION = "7.4.2"
 
     const val CORE_KTX = "androidx.core:core-ktx:1.8.0"
     const val LIFECYCLE_RUNTIME_KTX = "androidx.lifecycle:lifecycle-runtime-ktx:2.5.0"
