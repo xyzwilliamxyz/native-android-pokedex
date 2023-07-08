@@ -1,10 +1,10 @@
 buildscript {
     dependencies {
-        classpath(Dependencies.Classpath.HILT)
+        classpath(libs.hilt.android.classpath)
     }
 }
 
 plugins {
-    id(Dependencies.Plugin.ANDROID_LIBRARY) version Dependencies.GRADLE_VERSION apply false
-    id(Dependencies.Plugin.KOTLIN_ANDROID) version Dependencies.KOTLIN_VERSION apply false
+    id(libs.plugins.android.library.get().pluginId) version libs.versions.gradlePlugin apply false
+    id(libs.plugins.kotlin.android.get().pluginId) version libs.versions.kotlin apply false
 }

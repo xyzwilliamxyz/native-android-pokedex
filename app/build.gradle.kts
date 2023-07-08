@@ -1,17 +1,17 @@
 plugins {
-    id(Dependencies.Plugin.ANDROID_APPLICATION)
-    id(Dependencies.Plugin.KOTLIN_ANDROID)
-    id(Dependencies.Plugin.KAPT)
-    id(Dependencies.Plugin.HILT)
+    id(libs.plugins.android.application.get().pluginId)
+    id(libs.plugins.kotlin.android.get().pluginId)
+    id(libs.plugins.kapt.get().pluginId)
+    id(libs.plugins.hilt.get().pluginId)
 }
 
 android {
-    compileSdk = Config.COMPILE_SDK_VERSION
+    compileSdk = libs.versions.configCompileSdkVersion.get().toInt()
 
     defaultConfig {
         applicationId = "com.example.pokedex"
-        minSdk = Config.MIN_SDK_VERSION
-        targetSdk = Config.TARGET_SDK_VERSION
+        minSdk = libs.versions.configMinSdkVersion.get().toInt()
+        targetSdk = libs.versions.configTargetSdkVersion.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -37,20 +37,20 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
         freeCompilerArgs = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
-        jvmTarget = "1.8"
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = Dependencies.COMPOSE_VERSION
+        kotlinCompilerExtensionVersion = libs.versions.compose.get()
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -60,39 +60,38 @@ android {
 
 dependencies {
     // Compose
-    val composeBom = platform(Dependencies.COMPOSE_BOM)
+    val composeBom = platform(libs.compose.bom)
     implementation(composeBom)
-    implementation(Dependencies.COMPOSE_MATERIAL)
-    implementation(Dependencies.COMPOSE_FOUNDATION)
-    implementation(Dependencies.COMPOSE_UI)
-    debugImplementation(Dependencies.COMPOSE_UI_TOOLING_PREVIEW)
-    implementation(Dependencies.COMPOSE_UI_TOOLING)
-    debugImplementation(Dependencies.TEST_COMPOSE_MANIFEST)
+    implementation(libs.androidx.compose.material)
+    implementation(libs.androidx.compose.foundation)
+    debugImplementation(libs.androidx.compose.tooling.preview)
+    implementation(libs.androidx.compose.tooling)
+    implementation(libs.compose.navigation)
+    debugImplementation(libs.ui.test.manifest)
 
-    implementation(Dependencies.ACCOMPANIST_SYSTEMUICONTROLLER)
-    implementation(Dependencies.ACCOMPANIST_PAGER)
-    implementation(Dependencies.COIL_COMPOSE)
-    implementation(Dependencies.COIL_GIF)
+    implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.accompanist.pager)
+    implementation(libs.coil)
+    implementation(libs.coil.gif)
 
     // KTX libraries
-    implementation(Dependencies.CORE_KTX)
-    implementation(Dependencies.LIFECYCLE_RUNTIME_KTX)
+    implementation(libs.core.ktx)
+    implementation(libs.lifecycle.runtime.ktx)
 
     // Hilt
-    implementation(Dependencies.HILT_ANDROID)
-    kapt(Dependencies.HILT_COMPILER)
-    kapt(Dependencies.HILT_COMPILER_ANDROIDX)
-    implementation(Dependencies.HILT_COMPOSE_NAVIGATION)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
 
     // Retrofit
-    implementation(Dependencies.RETROFIT)
-    implementation(Dependencies.RETROFIT_CONVERTER)
-    implementation(Dependencies.MOSHI_KOTLIN)
-    implementation(Dependencies.OK_HTTP_LOGGING_INTERCEPTOR)
+    implementation(libs.retrofit)
+    implementation(libs.converter.moshi)
+    implementation(libs.moshi.kotlin)
+    implementation(libs.logging.interceptor)
 
     // Test
-    testImplementation(Dependencies.JUNIT)
-    androidTestImplementation(Dependencies.ANDROID_EXT_JUNIT)
-    androidTestImplementation(Dependencies.ESPRESSO_CORE)
-    androidTestImplementation(Dependencies.COMPOSE_JUNIT)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.junit.ktx)
+    androidTestImplementation(libs.espresso.core)
 }
